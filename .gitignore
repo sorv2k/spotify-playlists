@@ -1,0 +1,21 @@
+# Credentials - never commit these
+.env
+
+# Spotify auth cache
+.cache
+
+# Personal data
+liked_songs.json
+
+# Generated output files
+playlist_plan.md
+playlist_plan.json
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Claude Code
+.claude/

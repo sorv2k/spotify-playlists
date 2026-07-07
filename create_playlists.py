@@ -44,11 +44,9 @@ def create_playlist_and_add_songs(sp, user_id, playlist_data):
     description = playlist_data.get("description", "")
     song_ids = playlist_data["songs"]
 
-    pl = sp.user_playlist_create(
-        user=user_id,
-        name=name,
-        public=False,
-        description=description,
+    pl = sp._post(
+        "me/playlists",
+        payload={"name": name, "public": False, "description": description},
     )
     pl_id = pl["id"]
 

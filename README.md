@@ -88,6 +88,23 @@ python create_playlists.py
 
 Creates all the playlists in your Spotify account and adds the songs.
 
+## Keeping playlists up to date
+
+Once your playlists exist in Spotify, use this script whenever you like new songs:
+
+```bash
+python add_new_songs.py
+```
+
+It fetches any liked songs not yet in `liked_songs.json`, classifies them with Claude into your existing playlists, adds them on Spotify, and updates `liked_songs.json` with the new entries. Safe to re-run any time — it skips songs it's already seen and skips tracks already present in a target playlist.
+
+## Utility scripts
+
+These were written for one-off maintenance and contain hardcoded data from the sessions they were built for. Treat them as references rather than turnkey commands — edit the constants at the top of the file before running.
+
+- **`add_missed_songs.py`** — classifies and adds a hardcoded list of song IDs that were fetched but never added to a playlist. Update `NEW_SONG_IDS` before running.
+- **`merge_artist_playlists.py`** — asks Claude to fold artist-specific playlists (e.g. "The Weeknd: Starboy to After Hours") into broader genre/era playlists in `playlist_plan.json`. Update `ARTIST_PLAYLIST_NAMES` before running.
+
 ## Cost
 
 Step 2 uses the Claude API which has a small cost. For a library of ~800 songs it costs roughly **$0.30–0.50**.
